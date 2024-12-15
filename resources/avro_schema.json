@@ -1,0 +1,31 @@
+{
+    "type": "record",
+    "name": "trip_record",
+    "fields": [
+      { "name": "VendorID", "type": "long" },
+      { "name": "store_and_fwd_flag", "type": ["null", "string"] },
+      { "name": "RatecodeID", "type": ["null", "double"] },
+      { "name": "PULocationID", "type": "long" },
+      { "name": "DOLocationID", "type": "long" },
+      { "name": "passenger_count", "type": ["null", "double"] },
+      { "name": "trip_distance", "type": ["null", "double"] },
+      { "name": "fare_amount", "type": ["null", "double"] },
+      { "name": "extra", "type": ["null", "double"] },
+      { "name": "mta_tax", "type": ["null", "double"] },
+      { "name": "tip_amount", "type": ["null", "double"] },
+      { "name": "tolls_amount", "type": ["null", "double"] },
+      { "name": "ehail_fee", "type": ["null", "string"] },
+      { "name": "improvement_surcharge", "type": ["null", "double"] },
+      { "name": "total_amount", "type": ["null", "double"] },
+      { "name": "payment_type", "type": ["null", "double"] },
+      { "name": "trip_type", "type": ["null", "double"] },
+      { "name": "congestion_surcharge", "type": ["null", "double"] },
+      { "name": "pickup_datetime", "type": ["null", "string"] },
+      { "name": "dropoff_datetime", "type": ["null", "string"] },
+      { "name": "pickup_hour", "type": "int" },
+      { "name": "pickup_dayofweek", "type": "int" },
+      { "name": "taxi_type", "type": ["null", "string"] },
+      { "name": "airport_fee", "type": ["null", "double"] }
+    ]
+}
+  
