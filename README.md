@@ -195,7 +195,7 @@ I used Cron for setting schedules on Linux.
    ```bash
    0 2 1 9 * /usr/bin/python3 /mnt/c/Users/murva/Documents/venturedata_task/script.py >> /mnt/c/Users/murva/Documents/venturedata_task/logs/pipeline_sept.log 2>&1
 
-   0 2 1 3 * /usr/bin/python3 /mnt/c/Users/murva/Documents/venturedata_task/script.py >> /mnt/c/Users/murva/Documents/venturedata_task/logs/pipeline_jan.log 2>&1
+   0 2 1 3 * /usr/bin/python3 /mnt/c/Users/murva/Documents/venturedata_task/script.py >> /mnt/c/Users/murva/Documents/venturedata_task/logs/pipeline_march.log 2>&1
    ```
 
   
