@@ -74,19 +74,19 @@ LIMIT 3;
 
 | Column Name           | Data Type          | Description                           |
 |-----------------------|--------------------|---------------------------------------|
-| VendorID              | int64              | Identifier for the vendor             |
+| VendorID              | int64              | A code indicating the TPEP provider that provided the record             |
 | store_and_fwd_flag    | object (string)    | Indicator if the trip was held in memory before sending to the vendor |
 | RatecodeID            | float64            | Numeric code signifying the rate used |
-| PULocationID          | int64              | Pickup location zone ID               |
-| DOLocationID          | int64              | Dropoff location zone ID              |
+| PULocationID          | int64              | TLC Taxi Zone in which the taximeter was engaged              |
+| DOLocationID          | int64              | TLC Taxi Zone in which the taximeter was disengaged|
 | passenger_count       | float64            | Number of passengers in the vehicle   |
 | trip_distance         | float64            | Distance traveled during the trip     |
 | fare_amount           | float64            | Fare amount charged for the trip      |
-| extra                 | float64            | Additional charges (e.g., peak hour)  |
+| extra                 | float64            | Miscellaneous extras and surcharges |
 | mta_tax               | float64            | MTA tax added to the trip fare        |
 | tip_amount            | float64            | Tip amount paid by the passenger      |
 | tolls_amount          | float64            | Total amount of tolls paid            |
-| ehail_fee             | object (string)    | e-Hail fee (often unused or null)     |
+| ehail_fee             | object (string)    | e-Hail fee    |
 | improvement_surcharge | float64            | 30 cent improvement surcharge         |
 | total_amount          | float64            | Total amount paid (fare + extras)     |
 | payment_type          | float64            | Payment method code (e.g., credit card) |
@@ -97,7 +97,7 @@ LIMIT 3;
 | pickup_hour           | int32              | The hour of day (0-23) of pickup time |
 | pickup_dayofweek      | int32              | Day of the week for pickup (0=Monday, 6=Sunday) |
 | taxi_type             | object (string)    | Type of taxi (e.g., "yellow", "green")|
-| airport_fee           | float64            | Additional airport fee (if applicable)|
+| airport_fee           | float64            | Additional airport fee |
 
 
 
@@ -133,8 +133,11 @@ LIMIT 3;
 I ommited the some Id fileds from the avro schema above for demonstration purposes.  
 
 ## Power BI 
-I made a dahsboard out of the queries I wrote above. I used measures and added new columns.
+I then created a Power BI dashboard. I incorporated the queries and insights I developed earlier in this dashboard, and I also created calculated measures and added new columns using DAX. 
 
+  - **Measures:**  DAX measures for average trip distance, total trips, and single-rider trip counts. 
+  - **Day of Week Column:** DAX calculated column to convert the numeric day-of-week values into friendly names (e.g., "Monday", "Tuesday"). This made the  `Number of single rider trips in 2019 and 2020` visual more intuitive.
+  
 ![Dashboard](/resources/venturedata_tlc_de_task-1.png "a title")
 ## Run and Deploy the Pipeline
 
@@ -195,7 +198,7 @@ I used Cron for setting schedules on Linux.
    ```bash
    0 2 1 9 * /usr/bin/python3 /mnt/c/Users/murva/Documents/venturedata_task/script.py >> /mnt/c/Users/murva/Documents/venturedata_task/logs/pipeline_sept.log 2>&1
 
-   0 2 1 3 * /usr/bin/python3 /mnt/c/Users/murva/Documents/venturedata_task/script.py >> /mnt/c/Users/murva/Documents/venturedata_task/logs/pipeline_march.log 2>&1
+   0 2 1 3 * /usr/bin/python3 /mnt/c/Users/murva/Documents/venturedata_task/script.py >> /mnt/c/Users/murva/Documents/venturedata_task/logs/pipeline_mar.log 2>&1
    ```
 
   
@@ -208,7 +211,3 @@ I used Cron for setting schedules on Linux.
 6. https://crontab.guru/
 7. https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-measures
 8. https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-add-custom-column
-
-
- 
-

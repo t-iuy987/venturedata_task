@@ -30,7 +30,7 @@ def export_to_avro():
     combined_file = os.path.join(COMBINED_DATA_DIR, "all_taxi_data.parquet")
     avro_output_file = os.path.join(COMBINED_DATA_DIR, "all_taxi_data.avro")
 
-    # Read the combined parquet into a DataFrame
+    # read the combined parquet into a DataFrame
     df = pd.read_parquet(combined_file)
     
     # convert datetime columns to strings before writing to Avro.
@@ -40,15 +40,15 @@ def export_to_avro():
     df['pickup_datetime'] = df['pickup_datetime'].astype(str)
     df['dropoff_datetime'] = df['dropoff_datetime'].astype(str)
 
-    # Load and parse the Avro schema
+    # loading and parse the Avro schema
     with open(AVRO_SCHEMA_FILE, "r") as f:
         schema_dict = json.load(f)
     parsed_schema = parse_schema(schema_dict)
 
-    # Convert DataFrame to a list of dictionaries (Avro records)
+    # converting DataFrame to a list of dictionaries
     records = df.to_dict(orient="records")
 
-    # Write records to Avro file
+    # writing records to Avro file
     with open(avro_output_file, 'wb') as out:
         writer(out, parsed_schema, records)
 

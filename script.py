@@ -1,4 +1,3 @@
-# script.py
 import logging
 import argparse
 import os
