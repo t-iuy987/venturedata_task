@@ -193,11 +193,11 @@ I used Cron for setting schedules on Linux.
    ```
 
 2. **Edit the Crontab**  
-   The data is released every six months according to the TLC’s schedul:
+   
    ```bash
    crontab -e
    ```
-   and then added this line:
+   The data is released every six months according to the TLC’s schedul:
    ```bash
    0 2 1 9 * /usr/bin/python3 /mnt/c/Users/murva/Documents/venturedata_task/script.py >> /mnt/c/Users/murva/Documents/venturedata_task/logs/pipeline_sept.log 2>&1
 
