@@ -19,7 +19,6 @@ The pipeline downloads monthly TLC datasets for Yellow and Green taxis from the 
 - Standardize column names (`pickup_datetime`, `dropoff_datetime`).
 - Added derived columns: `pickup_hour`, `pickup_dayofweek`.
 - Addded a `taxi_type` column to combine Yellow and Green data under a single schema.
-- To ensure data quality, 
 
 
 ### 3. Load 
@@ -29,6 +28,10 @@ All monthly processed Parquet files are combined into a single unified Parquet f
 
 And then into Avro format.
 *Avro is a row-oriented format suitable for certain downstream systems or integrations.* It uses `fastavro` and a predefined Avro schema, `avro_schema.json`.
+
+**XLSX format:** I can totally reuse my current pipeline to produce an XLSX file since I’m already working with pandas DataFrames. After I’ve combined and cleaned my Parquet data, I just export it to Excel using `df.to_excel()`. 
+
+However, compared to Parquet or Avro, Excel is nowhere near as efficient. *Parquet and Avro are designed for big data, fast querying, compression, and schema evolution* while XLSX is heavier and can be slow to open with huge datasets. This happend to me when I tried cnverting my dataframe to excel. I had to switch to CSV due to large size. So, if my colleague wants millions of rows, performance might be a concern. But if he’s just doing familiar Excel tricks on a smaller sample it’s totally fine.
 
 
 ### Queries
